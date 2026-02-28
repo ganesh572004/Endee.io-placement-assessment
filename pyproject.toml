@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "endee-rag-assistant"
+version = "0.1.0"
+description = "RAG assistant using Endee as vector database"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "requests==2.32.3",
+  "sentence-transformers==3.0.1",
+  "numpy==1.26.4",
+  "python-dotenv==1.0.1",
+  "openai==1.40.6",
+]
+
+[project.optional-dependencies]
+dev = ["pytest==8.3.2"]
+
+[project.scripts]
+endee-rag = "endee_rag_assistant.main:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
